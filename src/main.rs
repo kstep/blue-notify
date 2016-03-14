@@ -20,14 +20,17 @@ fn main() {
                 let map = props.map(|(k, arg::Variant(v))| (k, v)).collect::<BTreeMap<String, bool>>();
                 if let (Some(state), Some(path)) = (map.get("Connected"), msg.path()) {
                     let msg = dbus::Message::new_method_call("org.bluez", path, "org.freedesktop.DBus.Properties", "Get").unwrap().append2("org.bluez.Device1", "Name");
-                    if let Ok(Some(arg::Variant(name))) = conn.send_with_reply_and_block(msg, 1000).map(|r| r.get1::<arg::Variant<String>>()) {
-                        let _ = notify::Notification::new()
-                            .summary("Bluetooth device")
-                            .hint(NotificationHint::Urgency(NotificationUrgency::Low))
-                            .icon(if *state {BT_ICON_ON} else {BT_ICON_OFF})
-                            .body(&*format!("{} {}", name, if *state {"connected"} else {"disconnected"}))
-                            .show();
-                    }
+                    let name = match conn.send_with_reply_and_block(msg, 1000).ok().and_then(|r| r.get1::<arg::Variant<String>>()) {
+                        Some(arg::Variant(name)) => name,
+                        _ => String::from("Unknown"),
+                    };
+
+                    let _ = notify::Notification::new()
+                        .summary("Bluetooth device")
+                        .hint(NotificationHint::Urgency(NotificationUrgency::Low))
+                        .icon(if *state {BT_ICON_ON} else {BT_ICON_OFF})
+                        .body(&*format!("{} {}", name, if *state {"connected"} else {"disconnected"}))
+                        .show();
                 }
             },
             _ => continue
