@@ -1,5 +1,5 @@
 [root]
-name = "btmon"
+name = "blue-notify"
 version = "0.1.0"
 dependencies = [
  "dbus 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
