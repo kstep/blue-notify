@@ -33,3 +33,8 @@ name = "pkg-config"
 version = "0.3.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
+[metadata]
+"checksum dbus 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)" = "abb71c6e0947236d2af299cd9957c3b04fe3f33db2d47a7df30825952f072eee"
+"checksum libc 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)" = "52f45f4d4d75de96cf7f8b0e37b6a8e2f96619749b80bd79aa9f5a3100d63208"
+"checksum notify-rust 3.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "536092530da325f36140df5b37523e476ad5e31afdeaff0e76b043c994fdcdc8"
+"checksum pkg-config 0.3.8 (registry+https://github.com/rust-lang/crates.io-index)" = "8cee804ecc7eaf201a4a207241472cc870e825206f6c031e3ee2a72fa425f2fa"

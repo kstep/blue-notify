@@ -6,8 +6,8 @@ use dbus::ConnectionItem;
 use std::collections::BTreeMap;
 use notify::{NotificationUrgency, NotificationHint};
 
-static BT_ICON_ON: &'static str = "/usr/share/icons/oxygen/32x32/apps/preferences-system-bluetooth.png";
-static BT_ICON_OFF: &'static str = "/usr/share/icons/oxygen/32x32/apps/preferences-system-bluetooth-inactive.png";
+static BT_ICON_ON: &'static str = "/usr/share/icons/oxygen/base/32x32/apps/preferences-system-bluetooth.png";
+static BT_ICON_OFF: &'static str = "/usr/share/icons/oxygen/base/32x32/apps/preferences-system-bluetooth-inactive.png";
 
 
 fn main() {
